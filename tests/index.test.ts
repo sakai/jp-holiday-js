@@ -379,7 +379,7 @@ describe('JpHoliday', () => {
     });
   });
 
-  describe('NAO 暦要項 Official Data (2018-2026)', () => {
+  describe('NAO 暦要項 Official Data (2018-2027)', () => {
     // 2018年 (平成30年) - NAO暦要項「国民の祝日」
     const holidays2018: [string, string][] = [
       ['2018-01-01', '元日'],
@@ -646,9 +646,37 @@ describe('JpHoliday', () => {
       expect(isHoliday(date)).toBe(true);
       expect(getName(date)).toBe(expectedName);
     });
+
+    // 2027年 (令和9年) - NAO暦要項「国民の祝日」
+    const holidays2027: [string, string][] = [
+      ['2027-01-01', '元日'],
+      ['2027-01-11', '成人の日'],
+      ['2027-02-11', '建国記念の日'],
+      ['2027-02-23', '天皇誕生日'],
+      ['2027-03-21', '春分の日'],
+      ['2027-03-22', '振替休日'],
+      ['2027-04-29', '昭和の日'],
+      ['2027-05-03', '憲法記念日'],
+      ['2027-05-04', 'みどりの日'],
+      ['2027-05-05', 'こどもの日'],
+      ['2027-07-19', '海の日'],
+      ['2027-08-11', '山の日'],
+      ['2027-09-20', '敬老の日'],
+      ['2027-09-23', '秋分の日'],
+      ['2027-10-11', 'スポーツの日'],
+      ['2027-11-03', '文化の日'],
+      ['2027-11-23', '勤労感謝の日'],
+    ];
+
+    it.each(holidays2027)('2027: %s should be %s', (dateStr, expectedName) => {
+      const [y, m, d] = dateStr.split('-').map(Number);
+      const date = new Date(y, m - 1, d);
+      expect(isHoliday(date)).toBe(true);
+      expect(getName(date)).toBe(expectedName);
+    });
   });
 
-  describe('Non-holidays (Random weekdays 2018-2026)', () => {
+  describe('Non-holidays (Random weekdays 2018-2027)', () => {
     // ランダムな平日（祝日でない日）
     const nonHolidays: string[] = [
       // 2018年
@@ -687,6 +715,10 @@ describe('JpHoliday', () => {
       '2026-01-15', '2026-02-16', '2026-03-16', '2026-04-15',
       '2026-05-15', '2026-06-15', '2026-07-15', '2026-08-17',
       '2026-10-15', '2026-12-10',
+      // 2027年
+      '2027-01-15', '2027-02-17', '2027-03-15', '2027-04-15',
+      '2027-05-14', '2027-06-16', '2027-07-15', '2027-08-18',
+      '2027-10-15', '2027-12-10',
     ];
 
     it.each(nonHolidays)('%s should not be a holiday', (dateStr) => {
