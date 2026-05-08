@@ -99,6 +99,27 @@ describe('JpHoliday', () => {
       expect(isHoliday(date)).toBe(true);
       expect(getName(date)).toBe('勤労感謝の日');
     });
+
+    it('should recognize 大喪の礼 on 1989-02-24 only', () => {
+      expect(getName(new Date(1989, 1, 24))).toBe('大喪の礼');
+      expect(getNameEn(new Date(1989, 1, 24))).toBe('State Funeral of Emperor Showa');
+      expect(getName(new Date(1990, 1, 24))).toBeNull();
+      expect(getName(new Date(1988, 1, 24))).toBeNull();
+    });
+
+    it('should recognize 即位礼正殿の儀 on 1990-11-12', () => {
+      expect(getName(new Date(1990, 10, 12))).toBe('即位礼正殿の儀');
+      expect(getNameEn(new Date(1990, 10, 12))).toBe('Enthronement Ceremony Day');
+      expect(getName(new Date(1991, 10, 12))).toBeNull();
+      expect(getName(new Date(1989, 10, 12))).toBeNull();
+    });
+
+    it('should recognize 結婚の儀 on 1993-06-09 only', () => {
+      expect(getName(new Date(1993, 5, 9))).toBe('結婚の儀');
+      expect(getNameEn(new Date(1993, 5, 9))).toBe('Imperial Wedding Ceremony');
+      expect(getName(new Date(1994, 5, 9))).toBeNull();
+      expect(getName(new Date(1992, 5, 9))).toBeNull();
+    });
   });
 
   describe('Happy Monday Holidays', () => {
