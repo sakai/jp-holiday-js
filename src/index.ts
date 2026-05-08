@@ -198,6 +198,40 @@ function getFixedHoliday(year: number, monthDay: string): HolidayInfo | null {
       }
       break;
 
+    case '02-24':
+      // 大喪の礼 (State Funeral of Emperor Showa) - 1989/2/24 only
+      // 法律: 平成元年法律第4号「昭和天皇の大喪の礼の行われる日を休日とする法律」(1989/2/17 公布・施行)
+      // 条文: 「昭和天皇の大喪の礼の行われる日は、休日とする。」
+      // 衆議院: https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/houritsu/11419890217004.htm
+      // 注: 法律本文は儀式の実施日を定めない。実施日は内閣告示(官報掲載)で確定するが、
+      //     平成期の官報は公開DBに無く一次URLは未取得。日付(1989/2/24)自体は確立した歴史的事実。
+      if (year === 1989) {
+        return {
+          name: '大喪の礼',
+          nameEn: 'State Funeral of Emperor Showa',
+          description: '昭和天皇の大喪の礼が行われる日。',
+        };
+      }
+      break;
+
+    // case '04-10':
+    //   // 皇太子明仁親王の結婚の儀 - 1959/4/10 only
+    //   // 法律: 昭和34年法律第16号「皇太子明仁親王の結婚の儀の行われる日を休日とする法律」(1959/3/17 公布)
+    //   // 条文: 「皇太子明仁親王の結婚の儀の行われる日は、休日とする。」
+    //   // 国立公文書館 御署名原本: https://www.digital.archives.go.jp/file/674250.html
+    //   // NDL 法令索引: https://hourei.ndl.go.jp/simple/detail?lawId=0000051030
+    //   // Note: 本ライブラリは1948/7/20以降をサポートしており、本日付は範囲内だが、現状コメントアウトしている。
+    //   // 注: 実施日(1959/4/10)は内閣・宮内庁の決定が先行し、法律はそれを休日化する形。
+    //   //     一次URLは法律の存在と公布日のみを裏付け、実施日自体は歴史的事実として確立。
+    //   if (year === 1959) {
+    //     return {
+    //       name: '結婚の儀',
+    //       nameEn: 'Imperial Wedding Ceremony',
+    //       description: '皇太子明仁親王の結婚の儀が行われる日。',
+    //     };
+    //   }
+    //   break;
+
     case '04-29':
       // Showa Day (昭和の日) / Greenery Day / Emperor's Birthday
       if (year >= 1927 && year <= 1988) {
@@ -285,6 +319,23 @@ function getFixedHoliday(year: number, monthDay: string): HolidayInfo | null {
           name: 'こどもの日',
           nameEn: "Children's Day",
           description: 'こどもの人格を重んじ、こどもの幸福をはかるとともに、母に感謝する。',
+        };
+      }
+      break;
+
+    case '06-09':
+      // 皇太子徳仁親王の結婚の儀 - 1993/6/9 only
+      // 法律: 平成5年法律第32号「皇太子徳仁親王の結婚の儀の行われる日を休日とする法律」(1993/4/30 公布)
+      // 条文: 「皇太子徳仁親王の結婚の儀の行われる日は、休日とする。」
+      // 衆議院: https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/houritsu/12619930430032.htm
+      // 御署名原本(国立公文書館): https://www.digital.archives.go.jp/file/5145516.html
+      // 注: 実施日(1993/6/9)は内閣・宮内庁の決定が先行し、法律はそれを休日化する形。
+      //     一次URLは法律の存在と公布日のみを裏付け、実施日自体は歴史的事実として確立。
+      if (year === 1993) {
+        return {
+          name: '結婚の儀',
+          nameEn: 'Imperial Wedding Ceremony',
+          description: '皇太子徳仁親王の結婚の儀が行われる日。',
         };
       }
       break;
@@ -399,6 +450,22 @@ function getFixedHoliday(year: number, monthDay: string): HolidayInfo | null {
     case '10-22':
       // Enthronement Ceremony Day (即位礼正殿の儀) - 2019 only
       if (year === 2019) {
+        return {
+          name: '即位礼正殿の儀',
+          nameEn: 'Enthronement Ceremony Day',
+          description: '即位礼正殿の儀が行われる日。',
+        };
+      }
+      break;
+
+    case '11-12':
+      // 即位礼正殿の儀 (平成) - 1990/11/12 only
+      // 法律: 平成2年法律第24号「即位礼正殿の儀の行われる日を休日とする法律」(1990/6/1 公布)
+      // 条文: 「即位礼正殿の儀の行われる日は、休日とする。」
+      // 衆議院: https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/houritsu/11819900601024.htm
+      // 注: 法律本文は儀式の実施日を定めない。実施日は内閣告示(官報掲載)で確定するが、
+      //     平成期の官報は公開DBに無く一次URLは未取得。日付(1990/11/12)自体は確立した歴史的事実。
+      if (year === 1990) {
         return {
           name: '即位礼正殿の儀',
           nameEn: 'Enthronement Ceremony Day',
